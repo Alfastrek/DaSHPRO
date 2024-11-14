@@ -1,0 +1,58 @@
+<nav class="navbar navbar-expand-lg navbar-light">
+  <div class="container-fluid justify-content-between">
+    <a class="navbar-brand ml-3" href="#">
+      {% load static %}
+      <img
+        src="{% static 'Logo.png' %}"
+        alt="Logo"
+        style="width: 23%; height: auto"
+      />
+    </a>
+    <ul class="navbar-nav mb-2 mb-lg-0">
+      <li class="nav-item">
+        <a class="nav-link custom-nav-link" href="#">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link custom-nav-link" href="#">About</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link custom-nav-link" href="#">Services</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link custom-nav-link" href="#">Contact</a>
+      </li>
+    </ul>
+    <div class="d-flex align-items-center">
+      <a href="https://www.github.com/alfastrek" target="_blank" class="me-3"
+        ><i class="fab fa-github" style="font-size: 35px; color: #ffffff"></i
+      ></a>
+      <a href="https://twitter.com/itsnotalfa" target="_blank" class="me-3"
+        ><i class="fab fa-twitter" style="font-size: 35px; color: #00acee"></i
+      ></a>
+      <a href="https://www.instagram.com/alfastrek" target="_blank" class="me-3"
+        ><i class="fab fa-instagram" style="font-size: 35px; color: #c13584"></i
+      ></a>
+      <a
+        href="/"
+        class="btn btn-outline-primary me-2"
+        style="
+          font-family: 'Montserrat', sans-serif;
+          font-size: 16px;
+          border-radius: 5px;
+          color: #fff;
+        "
+        >Login</a
+      >
+      <a
+        href="/"
+        class="btn btn-primary"
+        style="
+          font-family: 'Montserrat', sans-serif;
+          font-size: 16px;
+          border-radius: 5px;
+        "
+        >Signup</a
+      >
+    </div>
+  </div>
+</nav>
