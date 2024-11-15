@@ -5,9 +5,15 @@ import pymongo
 from pymongo import MongoClient
 from django.http import JsonResponse
 from django.shortcuts import render
+from dotenv import load_dotenv
 import json
+load_dotenv()
 
-client = MongoClient("mongodb+srv://aradhya1703:Abhinav%401703@cluster0.buu378k.mongodb.net/")  
+mongo_connection_string = os.getenv('MONGO_CONNECTION_STRING')
+if not mongo_connection_string:
+    raise ValueError("No MongoDB connection string set in environment variables")
+
+client = MongoClient(mongo_connection_string)
 db = client['Datafile']
 collection = db['Assignment']
 
