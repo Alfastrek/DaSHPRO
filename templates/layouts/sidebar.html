@@ -1,0 +1,49 @@
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<div class="d-flex mainside">
+
+  <!-- Sidebar -->
+  <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 280px; height:100vh">
+    
+    <hr>
+    <ul class="nav nav-pills flex-column mb-auto">
+      <li class="nav-item">
+        <a href="/" class="nav-link active" aria-current="page">
+          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"/></svg>
+          Home
+        </a>
+      </li>
+      <li>
+        <a href="/datatables" class="nav-link text-white">
+          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="datatables.html"/></svg>
+          Filtering Zone
+        </a>
+      </li>
+      <li>
+        <a href="/profile" class="nav-link text-white">
+          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="profile.html"/></svg>
+          Something About Me 
+        </a>
+      </li>
+    </ul>
+    <hr style="position: absolute; top: calc(75% - 10px);">
+    <div class="d-flex align-items-center pt-3" style="position: absolute; top: 75%;">
+      {% load static %}
+      <a href="https://github.com/alfastrek" target="_blank">
+      <img src="{% static '/Profile.png' %}" alt="Profile Picture" style="width: 50px; height: 50px; border-radius: 50%; object-fit:cover;">
+      <div class="ms-3">
+        <p class="mb-0" style="font-family: 'Montserrat', sans-serif; font-size: 18px; font-weight: bold; color: white;">Aradhya Shukla</p>
+      </a>
+      </div>
+     
+    </div>
+    <hr style="position: absolute; top: 75%;">
+    <hr style="position: absolute; top: calc(75% + 60px);">
+  </div>
+  
+
+  <!-- Main content -->
+  <div class="flex-grow-1">
+    <!-- Main content here -->
+  </div>
+
+</div>
