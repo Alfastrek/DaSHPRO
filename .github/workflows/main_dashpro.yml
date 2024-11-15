@@ -15,48 +15,39 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-      - name: Set up Python version
-        uses: actions/setup-python@v5
+      - name: Set up Python
+        uses: actions/setup-python@v2
         with:
-          python-version: "3.11"
+          python-version: "3.8"
 
-      - name: Create and start virtual environment
+      - name: Create and activate virtual environment
         run: |
           python -m venv venv
           source venv/bin/activate
 
       - name: Install dependencies
-        run: pip install -r requirements.txt
-
-      # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
-
-      - name: Zip artifact for deployment
-        run: zip release.zip ./* -r
-
-      - name: Upload artifact for deployment jobs
-        uses: actions/upload-artifact@v4
-        with:
-          name: python-app
-          path: |
-            release.zip
-            !venv/
-            name: Set up Python version
-            uses: actions/setup-python@v5
-            with:
-              python-version: "3.11"
-
-      - name: Create and start virtual environment
         run: |
-          python -m venv venv
           source venv/bin/activate
           pip install -r requirements.txt
 
       - name: Run Django Migrations and Collect Static Files
+      - name: Collect static files
         run: |
-          python manage.py migrate
+          source venv/bin/activate
           python manage.py collectstatic --noinput
+
+      - name: Apply migrations
+        run: |
+          source venv/bin/activate
+          python manage.py migrate
+
+      - name: Start Django server
+        run: |
+          source venv/bin/activate
+          nohup python manage.py runserver 0.0.0.0:8000 &
 
   deploy:
     runs-on: ubuntu-latest
