@@ -34,6 +34,19 @@ INSTALLED_APPS = [
     # Add your apps here
 ]
 
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'djongo', 
+        'NAME': 'Datafile',  
+        'CLIENT': {
+            'host': 'mongodb+srv://aradhya1703:Abhinav%401703@cluster0.buu378k.mongodb.net/your_database_name?retryWrites=true&w=majority',
+            'username': 'aradhya1703',
+            'password': 'Abhinav@1703'
+        }
+    }
+}
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
