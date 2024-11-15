@@ -1,4 +1,5 @@
 from urllib import request
+import os
 from bson import json_util
 import pymongo
 from pymongo import MongoClient
@@ -87,14 +88,17 @@ def intensity(request):
     # return render(request, 'dashboard.html', context)
 
 def base(request):
-    return render(request, 'layouts/base.html')
+    template_path = os.path.join('layouts', 'base.html')
+    return render(request, template_path)
 
 def reports(request):
-    return render(request,"reports.html")
+    template_path = os.path.join('reports.html')
+    return render(request, template_path)
 
 def datatabels(request):
-    return render(request,"datatables.html")
+    template_path = os.path.join('datatables.html')
+    return render(request, template_path)
 
 def profile(request):
-    return render(request,"profile.html")
-
+    template_path = os.path.join('profile.html')
+    return render(request, template_path)
