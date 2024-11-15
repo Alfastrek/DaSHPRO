@@ -62,7 +62,7 @@ ROOT_URLCONF = 'dashpro.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'dashpro/templates'],
+        'DIRS': [os.path.join(BASE_DIR, 'dashpro', 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
