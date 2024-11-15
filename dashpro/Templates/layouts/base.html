@@ -154,9 +154,9 @@
     <script>
         // Perform all API fetches concurrently
 Promise.all([
-fetch('http://127.0.0.1:8000/api/datas/'),
-fetch('http://127.0.0.1:8000/api/country_intensity_datas/'),
-fetch('http://127.0.0.1:8000/api/relevance_pestle_datas/')
+fetch('/api/datas/'),
+fetch('/api/country_intensity_datas/'),
+fetch('/api/relevance_pestle_datas/')
 ])
 .then(responses => Promise.all(responses.map(response => response.json())))
 .then(data => {
