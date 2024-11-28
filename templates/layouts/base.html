@@ -154,10 +154,18 @@
     <script>
         // Perform all API fetches concurrently
 Promise.all([
-    fetch('https://dashpro.azurewebsites.net/api/datas/'),
-    fetch('https://dashpro.azurewebsites.net/api/country_intensity_datas/'),
-    fetch('https://dashpro.azurewebsites.net/api/relevance_pestle_datas/')
+    fetch('/api/datas/'),
+    fetch('/api/country_intensity_datas/'),
+    fetch('/api/relevance_pestle_datas/')
 ])
+.then(responses => Promise.all(responses.map(response => response.json())))
+.then(data => {
+    console.log(data);  // Handle the fetched data here
+})
+.catch(error => {
+    console.error('Error fetching data:', error);
+});
+
 .then(responses => Promise.all(responses.map(response => response.json())))
 .then(data => {
 const [datas, countryIntensityDatas, relevancePestleDatas] = data;
