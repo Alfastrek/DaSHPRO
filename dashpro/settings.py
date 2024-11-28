@@ -1,17 +1,29 @@
 import os
 
+# Build paths inside the project like this: os.path.join(BASE_DIR, 'subdir')
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = '/static/'
+
+# Additional directories where static files will be searched for
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),  # change this to the directory where your static files are
+]
 
-# Security settings
+# Quick-start development settings - unsuitable for production
+# See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
+
+# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-8n-pylh*)ypgb358xg5pej9njilib2$sg0bj=^!8%08&251j1p'
-DEBUG = True
-ALLOWED_HOSTS = ['dashpro.azurewebsites.net', '127.0.0.1']
 
-# Installed apps
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = True
+
+ALLOWED_HOSTS = ["*"]
+
+# Application definition
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -19,22 +31,22 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # Add your apps here
 ]
 
-# Database configuration
+
 DATABASES = {
     'default': {
-        'ENGINE': 'djongo',
-        'NAME': 'Datafile',
+        'ENGINE': 'djongo', 
+        'NAME': 'Datafile',  
         'CLIENT': {
-            'host': 'mongodb+srv://aradhya1703:Abhinav%401703@cluster0.buu378k.mongodb.net/Datafile?retryWrites=true&w=majority',
+            'host': 'mongodb+srv://aradhya1703:Abhinav%401703@cluster0.buu378k.mongodb.net/your_database_name?retryWrites=true&w=majority',
             'username': 'aradhya1703',
-            'password': 'Abhinav@1703',
-        },
-    },
+            'password': 'Abhinav@1703'
+        }
+    }
 }
 
-# Middleware
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -47,7 +59,6 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'dashpro.urls'
 
-# Templates configuration
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -66,22 +77,54 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'dashpro.wsgi.application'
 
+# Database
+# https://docs.djangoproject.com/en/5.0/ref/settings/#databases
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
+
 # Password validation
+# https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
+
 AUTH_PASSWORD_VALIDATORS = [
-    {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
-    {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
-    {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator'},
-    {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
+    {
+        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+    },
 ]
 
-# Localization settings
+# Internationalization
+# https://docs.djangoproject.com/en/5.0/topics/i18n/
+
 LANGUAGE_CODE = 'en-us'
+
 TIME_ZONE = 'UTC'
+
 USE_I18N = True
+
 USE_L10N = True
+
 USE_TZ = True
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-# CSRF trusted origins
-CSRF_TRUSTED_ORIGINS = ['https://dashpro.azurewebsites.net']
+STATIC_URL = '/static/'
+
+# Default primary key field type
+# https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+this is settings.py
