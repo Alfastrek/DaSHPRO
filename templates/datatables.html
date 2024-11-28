@@ -86,7 +86,7 @@
     </style>
   </head>
   <body>
-    <a class="btn btn-primary" href="http://dashpro.azurewebsites.net/">Home</a>
+    <a class="btn btn-primary" href="/">Home</a>
 
     <div class="container">
       <!-- Filter Dropdown and Input -->
@@ -154,7 +154,7 @@
       }
 
       // Fetch data from API
-      fetch("http://dashpro.azurewebsites.net/api/datas/")
+      fetch("/api/datas/")
         .then((response) => {
           if (!response.ok) {
             throw new Error("Network response was not ok");
