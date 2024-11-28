@@ -101,7 +101,7 @@ def reports(request):
     template_path = os.path.join('reports.html')
     return render(request, template_path)
 
-def datatabels(request):
+def datatables(request):
     template_path = os.path.join('datatables.html')
     return render(request, template_path)
 
