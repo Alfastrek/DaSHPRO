@@ -15,82 +15,64 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v2
+      - name: Set up Python version
+        uses: actions/setup-python@v5
         with:
-          python-version: "3.8"
+          python-version: '3.10'
 
-      - name: Create and activate virtual environment
+      - name: Create and start virtual environment
         run: |
           python -m venv venv
           source venv/bin/activate
-
+      
       - name: Install dependencies
-        run: |
-          source venv/bin/activate
-          pip install -r requirements.txt
+        run: pip install -r requirements.txt
+        
+      # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
 
-      - name: Collect static files
-        run: |
-          source venv/bin/activate
-          python manage.py collectstatic --noinput
+      - name: Zip artifact for deployment
+        run: zip release.zip ./* -r
 
-      - name: Apply migrations
-        run: |
-          source venv/bin/activate
-          python manage.py migrate
+      - name: Upload artifact for deployment jobs
+        uses: actions/upload-artifact@v4
+        with:
+          name: python-app
+          path: |
+            release.zip
+            !venv/
 
   deploy:
     runs-on: ubuntu-latest
     needs: build
     environment:
-      name: "Production"
+      name: 'Production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
     permissions:
-      id-token: write # This is required for requesting the JWT
+      id-token: write #This is required for requesting the JWT
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v2
+      - name: Download artifact from build job
+        uses: actions/download-artifact@v4
         with:
-          python-version: "3.8"
+          name: python-app
 
-      - name: Create and activate virtual environment
-        run: |
-          python -m venv venv
-          source venv/bin/activate
+      - name: Unzip artifact for deployment
+        run: unzip release.zip
 
-      - name: Install dependencies
-        run: |
-          source venv/bin/activate
-          pip install -r requirements.txt
-
-      - name: Collect static files
-        run: |
-          source venv/bin/activate
-          python manage.py collectstatic --noinput
-
-      - name: Apply migrations
-        run: |
-          source venv/bin/activate
-          python manage.py migrate
-
+      
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_B04FA3F9CB1A45F3ABB5423E37EE4910 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_C76450065591483F9515BBCAA32069B3 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_36A787E58578458B8929B9A82A6AC310 }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_A05495341EB14472BB4362663CE83858 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_281793E655E94CE29D928302C0534C7F }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_15BF6A1A5EEC4CC5B61A934F316039CB }}
 
-      - name: Deploy to Azure Web App
+      - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v3
         id: deploy-to-webapp
         with:
-          app-name: "Dashpro"
-          slot-name: "Production"
+          app-name: 'Dashpro'
+          slot-name: 'Production'
+          
