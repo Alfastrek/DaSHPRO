@@ -81,11 +81,14 @@ cd path/to/your/django/project
 python manage.py migrate
 python manage.py runserver
 ```
+![Screenshot (182)](https://github.com/user-attachments/assets/0532ec12-c30a-4d5a-8f9c-6ca89ac33bb2)
+![Screenshot (181)](https://github.com/user-attachments/assets/ddc3d4d6-340c-4ca9-b5c2-53c7efba0c63)
 
-![Screenshot (180)](https://github.com/Alfastrek/DashboardPro/assets/93537649/11b9067c-0f6b-4b66-ac6c-03537c7e1834)
-![Screenshot (181)](https://github.com/Alfastrek/DashboardPro/assets/93537649/63b5aae0-983b-4588-978e-bbf6b642c9e5)
-![Screenshot (182)](https://github.com/Alfastrek/DashboardPro/assets/93537649/d6d037da-198d-40cc-9ce1-e771a4fbb1c8)
-![Screenshot (183)](https://github.com/Alfastrek/DashboardPro/assets/93537649/a931eead-9c24-4363-859c-e0808555febe)
-![Screenshot (184)](https://github.com/Alfastrek/DashboardPro/assets/93537649/d97b9047-12f3-47b1-9a6d-c12c0948c423)
-![Screenshot (185)](https://github.com/Alfastrek/DashboardPro/assets/93537649/1bd2aae6-26f8-4d27-b2cf-458c4219095d)
+![Screenshot (180)](https://github.com/user-attachments/assets/c164032b-9755-409b-ba1c-694724d57d06)
+
+![Screenshot (185)](https://github.com/user-attachments/assets/8c1dca1f-345b-4984-8a20-d44c2b4abd3b)
+
+![Screenshot (183)](https://github.com/user-attachments/assets/a1014471-d5e0-4e08-a49d-504424a51711)
+
+
 
